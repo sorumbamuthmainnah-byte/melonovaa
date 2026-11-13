@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>MELONOVA – Fresh Melon Market</title>
+<style>
+:root{--sage-d:#567D46;--sage:#e6efd9;--yel:#F6A65C;--bg:#FFFDF5;--surf:#FFFFFF;--ink:#292929;--mut:#6d6d63;--line:#ece7d6;--onG:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sage:#2d3a29;--bg:#1b2019;--surf:#242b21;--ink:#f3f0e4;--mut:#aeb3a3;--line:#343d30;--sage-d:#8fbb7b;--onG:#17210f;color-scheme:dark}}
+:root[data-theme="dark"]{--sage:#2d3a29;--bg:#1b2019;--surf:#242b21;--ink:#f3f0e4;--mut:#aeb3a3;--line:#343d30;--sage-d:#8fbb7b;--onG:#17210f;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px;height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Poppins","Inter","Segoe UI",system-ui,sans-serif;line-height:1.65;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:49}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:inherit;margin:0;line-height:1.1;letter-spacing:-.02em}
+.wrap{max-width:1160px;margin:auto;padding:0 24px}
+section{padding:80px 0}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px)}
+nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.06em;line-height:1.05}
+.logo i{width:28px;height:28px;border-radius:50%;background:var(--yel);box-shadow:inset -5px -5px 0 rgba(0,0,0,.12);flex:none}
+.logo span{color:var(--sage-d)}
+.logo small{display:block;font:600 12px Poppins,sans-serif;letter-spacing:.02em;color:var(--sage-d);margin-top:2px}
+.links{display:flex;gap:26px;font-size:14px;font-weight:500}
+.links a{position:relative;padding:4px 0}
+.links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--yel);transition:width .3s}
+.links a:hover::after,.links a.act::after{width:100%}
+.links a.act{font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--sage-d);color:var(--onG);border:0;border-radius:99px;padding:14px 30px;font:600 14px "Poppins",sans-serif;letter-spacing:.06em;cursor:pointer;transition:transform .25s,box-shadow .25s;box-shadow:0 12px 26px -14px var(--sage-d)}
+.btn:hover{transform:translateY(-3px)}
+.btn.y{background:var(--yel);color:#292929;box-shadow:0 12px 26px -14px var(--yel)}
+.btn.o{background:none;color:var(--sage-d);border:1.5px solid var(--sage-d);box-shadow:none}
+.btn:disabled{opacity:.6}
+.cartbtn{padding:10px 20px;font-size:13px;letter-spacing:.02em}
+.cartbtn b{background:var(--yel);color:#292929;border-radius:99px;padding:0 8px;margin-left:2px;font-size:12px}
+.ib{display:none;background:none;border:0;color:var(--ink);font-size:26px;cursor:pointer;width:42px;height:42px}
+.hero{display:grid;grid-template-columns:1fr 1.15fr;align-items:center;gap:10px;position:relative;padding:30px 24px 50px;min-height:calc(100vh - 76px)}
+.hero::before{content:"";position:absolute;right:-8%;top:50%;width:62vw;max-width:760px;aspect-ratio:1;transform:translateY(-50%);background:radial-gradient(circle,rgba(246,166,92,.3),rgba(246,166,92,0) 68%);z-index:-1}
+.tag{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:700;letter-spacing:.06em;color:var(--sage-d);margin-bottom:12px}
+.tag::before{content:"";width:34px;height:2px;background:var(--yel)}
+.hero h1{font-size:clamp(40px,5.6vw,76px);font-weight:800;margin:10px 0 20px}
+.hero h1 em{font-style:normal;color:var(--sage-d)}
+.hero p{color:var(--mut);max-width:460px;font-size:16px}
+.art svg{width:100%;height:auto;overflow:visible;display:block}
+.fl{animation:fl 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.fl.b{animation-duration:8s;animation-delay:-2s}.fl.c{animation-duration:7s;animation-delay:-4s}
+@keyframes fl{50%{transform:translateY(-16px) rotate(6deg)}}
+.dr{animation:dr 3.4s ease-in infinite}
+.dr.b{animation-delay:-1.4s}
+@keyframes dr{0%{opacity:0;transform:translateY(-6px)}20%{opacity:1}100%{opacity:0;transform:translateY(34px)}}
+.promo{background:var(--sage-d);color:var(--onG);border-radius:36px;padding:38px 44px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;position:relative;overflow:hidden}
+.promo::after{content:"";position:absolute;right:-60px;bottom:-90px;width:260px;height:260px;border-radius:50%;background:rgba(246,166,92,.28);pointer-events:none}
+.promo>*{position:relative;z-index:1}
+.promo h3{font-size:26px;font-weight:700}
+.promo code{background:var(--yel);color:#292929;padding:3px 14px;border-radius:99px;font-weight:700}
+.promo .btn.y{box-shadow:none}
+.sec-h{text-align:center;max-width:560px;margin:0 auto 48px}
+.sec-h h2{font-size:clamp(30px,4.2vw,48px);font-weight:700}
+.sec-h p{color:var(--mut);margin:12px 0 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:28px;padding:16px;display:flex;flex-direction:column;transition:transform .35s,box-shadow .35s}
+.card:hover{transform:translateY(-8px);box-shadow:0 30px 50px -28px rgba(60,50,20,.4)}
+.card .pic{height:210px;background:var(--bg);border-radius:20px;display:grid;place-items:center;overflow:hidden}
+.card .pic .mi{height:84%;width:auto;transition:transform .5s}
+.card:hover .pic .mi{transform:scale(1.08) rotate(-5deg)}
+.card .body{padding:16px 6px 6px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{font-size:20px;font-weight:600}
+.card p{margin:0;color:var(--mut);font-size:14px}
+.price{font-weight:700;font-size:20px;color:var(--sage-d)}
+.price small{font-weight:400;color:var(--mut);font-size:13px}
+.stock{font-size:12px;font-weight:600}
+.bar{height:6px;background:var(--line);border-radius:9px;overflow:hidden;margin-top:3px}
+.bar i{display:block;height:100%;background:var(--yel);border-radius:9px}
+.row{display:flex;gap:8px;margin-top:auto;padding-top:10px}
+.row .btn{flex:1;padding:11px 10px;font-size:13px;letter-spacing:.02em;justify-content:center;box-shadow:none}
+.mi{display:block}.ts{filter:hue-rotate(62deg) saturate(.55) brightness(1.12)}.tl{filter:hue-rotate(-8deg) saturate(1.3) brightness(1.08)}.ta{filter:hue-rotate(78deg) saturate(.8) brightness(1.05)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;counter-reset:s}
+.step{background:var(--bg);border:1px solid var(--line);border-radius:28px;padding:26px;counter-increment:s}
+.step::before{content:counter(s);display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--yel);color:#292929;font-weight:700;margin-bottom:14px}
+.step h3{font-size:19px;font-weight:600;margin-bottom:6px}.step p{margin:0;font-size:14px;color:var(--mut)}
+.alt{background:var(--surf);border-block:1px solid var(--line)}
+.q{background:var(--surf);border:1px solid var(--line);border-radius:28px;padding:28px}
+.q .st{color:var(--yel);letter-spacing:3px}
+.q p{margin:10px 0 14px;font-size:15px}.q b{font-size:13px;color:var(--sage-d)}
+.rc{background:var(--surf);border:1px solid var(--line);border-radius:28px;padding:26px}
+.rc .em{font-size:38px}.rc h3{font-size:21px;font-weight:600;margin:4px 0}
+.rc .meta{font-size:12px;color:var(--mut);margin-bottom:8px}
+.rc .meta b{background:var(--yel);color:#292929;border-radius:99px;padding:2px 12px;margin-right:6px}
+.rc details{margin-top:12px;font-size:14px}.rc summary{cursor:pointer;font-weight:600;color:var(--sage-d)}
+.rc ul,.rc ol{padding-left:20px;margin:8px 0;color:var(--mut)}
+.wb{background:var(--surf);border:1px solid var(--line);border-left:5px solid var(--yel);border-radius:18px;padding:16px 20px;margin-top:22px;font-size:14px}
+.tb{width:100%;border-collapse:collapse;font-size:14px;background:var(--surf);border-radius:18px;overflow:hidden}
+.tb th,.tb td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line)}
+.tb th{background:var(--sage-d);color:var(--onG)}
+.view{display:none}.view.on{display:block;animation:fi .6s}
+@keyframes fi{from{opacity:0;transform:translateY(14px)}}
+.mc{background:var(--surf);border:1px solid var(--line);border-radius:28px;padding:32px;display:block;transition:.3s}
+.mc:hover{transform:translateY(-6px);border-color:var(--yel);box-shadow:0 30px 50px -30px rgba(60,50,20,.4)}
+.mc .em{font-size:46px}.mc h3{margin:10px 0 4px;font-size:22px}.mc p{margin:0;color:var(--mut);font-size:14px}
+.back{padding-top:24px;font-size:14px;color:var(--sage-d);font-weight:600}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:60;display:none;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(4px)}
+.ov.on{display:flex}
+.modal{background:var(--surf);border-radius:32px;max-width:520px;width:100%;max-height:90vh;overflow:auto;padding:28px;position:relative}
+.modal .x{position:absolute;right:16px;top:10px;background:none;border:0;font-size:28px;color:var(--mut);cursor:pointer}
+.modal ul{padding-left:18px;color:var(--mut);font-size:14px}
+.modal .mi{width:150px}
+.item{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.item .mi{width:48px;flex:none}.item div{flex:1}
+.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+input,select,textarea{width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:16px;background:var(--bg);color:var(--ink);font:inherit;margin:4px 0 12px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--yel);border-color:transparent}
+label{font-size:13px;font-weight:600}
+.tot{display:flex;justify-content:space-between;font-weight:700;margin:12px 0}
+.toast{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 26px;border-radius:99px;font-size:14px;z-index:80;display:none}
+footer{background:#292929;color:#e9e6d8;padding:56px 0 34px;text-align:center;font-size:14px;margin-top:40px}
+footer .btn.o{color:#e9e6d8;border-color:#666}
+@media(max-width:820px){.links{display:none;position:absolute;top:76px;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;padding:8px 24px 18px;border-bottom:1px solid var(--line)}.links.on{display:flex}.links a{padding:12px 0}.ib{display:grid;place-items:center}.hero{grid-template-columns:1fr;min-height:auto;padding-top:0}.art{order:-1;max-width:520px;margin:0 auto}.hero p{max-width:none}section{padding:60px 0}.promo{padding:30px 26px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<radialGradient id="gm" cx=".34" cy=".3" r=".85"><stop offset="0" stop-color="#ffd9a3"/><stop offset=".45" stop-color="#F6A65C"/><stop offset="1" stop-color="#c9742a"/></radialGradient>
+<radialGradient id="gf" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#ffd08e"/><stop offset=".6" stop-color="#F6A65C"/><stop offset="1" stop-color="#e98a3a"/></radialGradient>
+<radialGradient id="gd" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#d9efff"/><stop offset="1" stop-color="#8fc3ea"/></radialGradient>
+<linearGradient id="gl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7aa564"/><stop offset="1" stop-color="#3f6633"/></linearGradient>
+<pattern id="net" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0H14M0 0V14" stroke="#fff" stroke-opacity=".38" stroke-width="1.6" fill="none"/></pattern>
+<symbol id="mel" viewBox="0 0 200 210"><ellipse cx="100" cy="196" rx="70" ry="9" fill="#000" opacity=".16"/><circle cx="100" cy="100" r="92" fill="url(#gm)"/><circle cx="100" cy="100" r="92" fill="url(#net)"/><path d="M100 8Q80 100 100 192M100 8Q135 100 100 192M100 8Q40 100 100 192" stroke="#b4651f" stroke-opacity=".35" stroke-width="2.4" fill="none"/><ellipse cx="68" cy="56" rx="30" ry="18" fill="#fff" opacity=".4" transform="rotate(-32 68 56)"/><path d="M100 8q4-8 12-10" stroke="#5f7d4a" stroke-width="5" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="drop" viewBox="-10 -16 20 28"><path d="M0-14C6-4 9 2 9 6a9 9 0 0 1-18 0c0-4 3-10 9-20z" fill="url(#gd)" stroke="#9cc9ea" stroke-width=".6"/><ellipse cx="-3" cy="3" rx="2" ry="3.4" fill="#fff" opacity=".9"/></symbol>
+<symbol id="leaf" viewBox="0 0 80 50"><path d="M2 25C20 -4 62 -2 78 25 62 52 20 54 2 25z" fill="url(#gl)"/><path d="M4 25H70" stroke="#d6e8c8" stroke-width="1.6" opacity=".7"/></symbol>
+</defs></svg>
+<header><div class="wrap"><nav>
+<a class="logo" href="#home"><i></i><div>MELO<span>NOVA</span><small>Fresh dari Petani Gen Z</small></div></a>
+<div class="links" id="lk"><a href="#home">Beranda</a><a href="#menu">Menu</a><a href="#katalog">Katalog</a><a href="#pembelian">Pembelian</a><a href="#budidaya">Cara Menanam</a><a href="#resep">Resep</a><a href="#simpan">Simpan Melon</a></div>
+<button class="btn cartbtn" onclick="openCart()">🛒 Keranjang<b id="cc">0</b></button>
+<button class="ib" id="mb" aria-label="Menu" onclick="document.getElementById('lk').classList.toggle('on')">☰</button></nav></div></header>
+
+<main id="top"><div class="view" data-v="home">
+<div class="wrap hero">
+<div><span class="tag">🌱 Fresh dari Petani Gen Z</span>
+<h1>Melon hidroponik, <em>segar</em> langsung dari greenhouse.</h1>
+<p>Tiga varian pilihan dengan rasa manis alami, ditanam tanpa tanah, bersih, dan dipanen saat matang sempurna. Pesan hari ini, tiba segar di rumah Anda.</p>
+<p style="margin-top:20px"><a class="btn y" href="#menu">Mulai →</a> <a class="btn o wa" target="_blank" rel="noopener">💬 Chat WhatsApp</a></p></div>
+<div class="art"><svg viewBox="0 0 640 600" role="img" aria-label="Fresh melons with a juicy cut half and water drops">
+<ellipse cx="340" cy="548" rx="260" ry="20" fill="#000" opacity=".12"/>
+<use class="fl c" href="#leaf" x="10" y="90" width="120" height="75" transform="rotate(-24 70 130)"/>
+<use class="fl b" href="#leaf" x="520" y="30" width="100" height="62" transform="rotate(30 570 60)"/>
+<use href="#mel" x="40" y="70" width="400" height="420"/>
+<g transform="translate(430 372)">
+<circle r="168" fill="#8fb06c"/><circle r="168" fill="url(#net)" opacity=".5"/>
+<circle r="150" fill="#dcebbd"/><circle r="140" fill="url(#gf)"/>
+<ellipse rx="66" ry="60" fill="#ffe3b6"/>
+<g fill="#fff6e0" stroke="#e9c58a" stroke-width="1.2"><ellipse cx="-24" cy="-14" rx="8" ry="4.5" transform="rotate(-30 -24 -14)"/><ellipse cx="2" cy="-26" rx="8" ry="4.5" transform="rotate(20 2 -26)"/><ellipse cx="26" cy="-6" rx="8" ry="4.5" transform="rotate(50 26 -6)"/><ellipse cx="-10" cy="12" rx="8" ry="4.5" transform="rotate(10 -10 12)"/><ellipse cx="16" cy="24" rx="8" ry="4.5" transform="rotate(-40 16 24)"/><ellipse cx="-34" cy="22" rx="8" ry="4.5" transform="rotate(40 -34 22)"/></g>
+<path d="M-110 -70A132 132 0 0 1 -30 -128" stroke="#fff" stroke-width="9" stroke-linecap="round" fill="none" opacity=".45"/>
+<g stroke="#fff" stroke-opacity=".25" stroke-width="1.5"><path d="M0 -66V-138M0 66V138M-66 0H-138M66 0H138M47 -47L98 -98M-47 47L-98 98M47 47L98 98M-47 -47L-98 -98"/></g>
+</g>
+<use class="fl" href="#drop" x="250" y="470" width="34" height="48"/>
+<use class="fl b" href="#drop" x="360" y="520" width="26" height="36"/>
+<use class="dr" href="#drop" x="560" y="448" width="24" height="34"/>
+<use class="dr b" href="#drop" x="320" y="500" width="22" height="30"/>
+<use class="fl c" href="#drop" x="95" y="500" width="22" height="30"/>
+<g class="fl b"><path d="M520 120a52 52 0 0 1 104 0z" fill="#8fb06c"/><path d="M528 120a44 44 0 0 1 88 0z" fill="url(#gf)"/><path d="M542 120a30 30 0 0 1 60 0z" fill="#ffe3b6"/></g>
+<g class="fl c" transform="translate(40 250) rotate(-20)"><path d="M0 0a38 38 0 0 1 76 0z" fill="#8fb06c"/><path d="M6 0a32 32 0 0 1 64 0z" fill="url(#gf)"/></g>
+</svg></div>
+</div>
+
+<div class="wrap" id="promo"><div class="promo">
+<div><h3>Promo Panen Raya 🍈</h3><p style="margin:4px 0 0">Diskon 15% untuk pembelian minimal 3 melon. Gunakan kode <code>FRESH15</code> saat checkout.</p></div>
+<a class="btn y" href="#katalog">Ambil Promo</a></div></div>
+<section id="lokasi" style="padding-bottom:0"><div class="wrap"><div class="rc" style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between"><div style="max-width:560px"><div class="em">📍</div><h3>Kunjungi Greenhouse Kami</h3><p id="addr" style="margin:4px 0;font-size:14px"></p><p style="margin:0;font-size:13px;color:var(--mut)">Ingin datang langsung? Hubungi kami lewat WhatsApp terlebih dahulu agar kami bisa menyiapkan melon dan menyambut Anda.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn wa" target="_blank" rel="noopener">💬 Hubungi via WhatsApp</a><a class="btn o" id="maps" target="_blank" rel="noopener">🗺️ Buka di Maps</a></div></div></div></section>
+<section id="testimoni"><div class="wrap">
+<div class="sec-h"><h2>Kata Pelanggan</h2><p>Dipercaya keluarga dan pelaku usaha kuliner</p></div>
+<div class="grid">
+<div class="q"><div class="st">★★★★★</div><p>Lavender-nya manis dan dagingnya renyah. Anak-anak langsung habis dalam sehari.</p><b>— Rina, Jakarta Selatan</b></div>
+<div class="q"><div class="st">★★★★★</div><p>Kemasan rapi dan melon sampai masih segar. Saya pakai untuk jus di kafe, pelanggan suka.</p><b>— Dimas, Pemilik Kafe</b></div>
+<div class="q"><div class="st">★★★★☆</div><p>Skidrow teksturnya lembut dan manis. Senang bisa lihat proses budidayanya.</p><b>— Sari, Tangerang</b></div>
+</div><p class="ul" style="text-align:center;margin:30px 0 0"><a class="btn y" target="_blank" rel="noopener">✍️ Tulis Ulasan</a></p></div></section>
+
+
+</div>
+<div class="view" data-v="menu"><section><div class="wrap"><div class="sec-h"><h2>Mau ke mana hari ini?</h2><p>Pilih menu untuk mulai menjelajah MELONOVA</p></div>
+<div class="grid"><a class="mc" href="#katalog"><div class="em">🍈</div><h3>Katalog</h3><p>Lihat tiga varian melon, harga, keunggulan, dan stok.</p></a>
+<a class="mc" href="#pembelian"><div class="em">🛒</div><h3>Pembelian</h3><p>Cek keranjang, pakai kode promo, lalu checkout.</p></a>
+<a class="mc" href="#budidaya"><div class="em">🌱</div><h3>Cara Menanam</h3><p>Kenali proses budidaya hidroponik kami.</p></a>
+<a class="mc" href="#resep"><div class="em">🍹</div><h3>Resep</h3><p>Ide olahan melon yang segar dan mudah dibuat.</p></a>
+<a class="mc" href="#simpan"><div class="em">🧊</div><h3>Simpan Melon</h3><p>Cara menyimpan melon utuh dan yang sudah dikupas agar tetap segar.</p></a>
+<a class="mc" href="#pengiriman"><div class="em">🚚</div><h3>Pengiriman</h3><p>Area layanan, kurir JNE, dan jadwal pengiriman.</p></a></div></div></section></div>
+<div class="view" data-v="katalog"><div class="wrap"><div class="back"><a href="#menu">← Kembali ke Menu</a></div></div><div class="wrap mp" style="padding-top:18px"><div class="wb" style="margin-top:0;display:flex;flex-wrap:wrap;gap:10px;align-items:center"><b>🛍️ Belanja juga bisa lewat:</b><a class="btn o" data-m="shopee" target="_blank" rel="noopener">Shopee</a><a class="btn o" data-m="tokopedia" target="_blank" rel="noopener">Tokopedia</a><a class="btn o" data-m="tiktokshop" target="_blank" rel="noopener">TikTok Shop</a></div></div><section id="katalog"><div class="wrap">
+<div class="sec-h"><h2>Katalog Melon</h2><p>Pilih varian favorit Anda</p></div>
+<div class="grid" id="grid"></div>
+</div></section>
+
+</div><div class="view" data-v="budidaya"><div class="wrap"><div class="back"><a href="#menu">← Kembali ke Menu</a></div></div><section id="budidaya" class="alt"><div class="wrap">
+<div class="sec-h"><h2>Proses Budidaya Hidroponik</h2><p>Transparan dari benih hingga sampai ke tangan Anda</p></div>
+<div class="steps">
+<div class="step"><h3>Persemaian</h3><p>Benih unggul disemai di media rockwool selama 10–14 hari hingga berdaun sejati.</p></div>
+<div class="step"><h3>Pindah Tanam</h3><p>Bibit dipindah ke instalasi hidroponik air bersirkulasi, tanpa tanah maupun media tanam tambahan, di dalam greenhouse yang terlindung dari hama dan hujan.</p></div>
+<div class="step"><h3>Nutrisi Terukur</h3><p>Larutan nutrisi AB mix dialirkan terus-menerus lewat sirkulasi air, sehingga akar menyerap nutrisi langsung. EC dan pH dipantau harian.</p></div>
+<div class="step"><h3>Seleksi Buah</h3><p>Satu tanaman hanya diberi satu buah agar rasa lebih manis dan ukuran seragam.</p></div>
+<div class="step"><h3>Panen &amp; Kirim</h3><p>Dipanen di umur 55–70 hari, dicek tingkat kemanisannya, lalu dikemas aman.</p></div>
+</div><div class="wb ss" style="text-align:center;margin-top:34px"><p style="margin:0 0 14px">Ingin tahu lebih lanjut atau melihat proses budidaya yang sebenarnya? Kunjungi sosial media kami untuk melihat video dan keseharian di greenhouse.</p><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><a class="btn o" data-s="tiktok" target="_blank" rel="noopener">🎵 TikTok</a><a class="btn o" data-s="youtube" target="_blank" rel="noopener">▶️ YouTube</a><a class="btn o" data-s="facebook" target="_blank" rel="noopener">👍 Facebook</a><a class="btn o" data-s="instagram" target="_blank" rel="noopener">📸 Instagram</a></div></div></div></section>
+
+</div><div class="view" data-v="resep"><div class="wrap"><div class="back"><a href="#menu">← Kembali ke Menu</a></div></div><section id="resep"><div class="wrap">
+<div class="sec-h"><h2>Resep Olahan Melon</h2><p>Ide segar untuk menikmati melon MELONOVA di rumah</p></div>
+<div class="grid">
+<div class="rc"><div class="em">🥤</div><h3>Melon Juice Honey Lime</h3><div class="meta"><b>Skidrow</b>10 menit · 2 gelas</div><p style="margin:0;font-size:14px;color:var(--mut)">Jus dingin yang manis alami, cocok untuk cuaca panas.</p>
+<details><summary>Lihat resep</summary><ul><li>400 g daging melon Skidrow</li><li>1 sdm madu</li><li>1 sdm air jeruk nipis</li><li>150 ml air dingin, es batu secukupnya</li></ul><ol><li>Potong melon, masukkan ke blender bersama madu, jeruk nipis, dan air.</li><li>Blender sampai halus, lalu sajikan dengan es batu.</li></ol></details></div>
+<div class="rc"><div class="em">🥗</div><h3>Salad Melon Mint Feta</h3><div class="meta"><b>Lavender</b>10 menit · 2 porsi</div><p style="margin:0;font-size:14px;color:var(--mut)">Perpaduan manis, asin, dan segar daun mint.</p>
+<details><summary>Lihat resep</summary><ul><li>300 g Lavender, potong dadu</li><li>50 g keju feta atau keju parut</li><li>Daun mint segar</li><li>1 sdm minyak zaitun, sedikit lada hitam</li></ul><ol><li>Tata melon dan keju dalam mangkuk.</li><li>Tambahkan daun mint, minyak zaitun, dan lada. Aduk pelan, sajikan dingin.</li></ol></details></div>
+<div class="rc"><div class="em">🍧</div><h3>Melon Sorbet</h3><div class="meta"><b>Lavender</b>10 menit + 4 jam beku · 4 porsi</div><p style="margin:0;font-size:14px;color:var(--mut)">Es segar tanpa susu dengan rasa melon pekat.</p>
+<details><summary>Lihat resep</summary><ul><li>500 g Lavender, potong dan bekukan</li><li>2 sdm gula pasir atau madu</li><li>1 sdm air jeruk lemon</li></ul><ol><li>Blender melon beku dengan gula dan lemon sampai lembut.</li><li>Tuang ke wadah, bekukan 3–4 jam, aduk sekali di tengah waktu.</li></ol></details></div>
+<div class="rc"><div class="em">🥛</div><h3>Smoothie Melon Yogurt</h3><div class="meta"><b>Skidrow</b>5 menit · 1 gelas</div><p style="margin:0;font-size:14px;color:var(--mut)">Sarapan ringan, segar dan mengenyangkan.</p>
+<details><summary>Lihat resep</summary><ul><li>250 g Skidrow</li><li>100 g yogurt plain</li><li>1 sdt madu, 4 es batu</li></ul><ol><li>Masukkan semua bahan ke blender.</li><li>Blender 30 detik hingga kental dan halus.</li></ol></details></div>
+<div class="rc"><div class="em">🍮</div><h3>Puding Melon Susu</h3><div class="meta"><b>Skidrow</b>20 menit + 2 jam dingin · 6 porsi</div><p style="margin:0;font-size:14px;color:var(--mut)">Puding lembut berwarna hijau muda yang cantik.</p>
+<details><summary>Lihat resep</summary><ul><li>300 g Skidrow, haluskan</li><li>500 ml susu cair</li><li>1 bungkus agar-agar bubuk (7 g)</li><li>4 sdm gula</li></ul><ol><li>Masak susu, agar-agar, dan gula sambil diaduk sampai mendidih.</li><li>Matikan api, campur dengan melon halus, lalu tuang ke cetakan.</li><li>Dinginkan di kulkas minimal 2 jam.</li></ol></details></div>
+<div class="rc"><div class="em">🍹</div><h3>Es Melon Sirup Susu</h3><div class="meta"><b>Aruni</b>10 menit · 3 gelas</div><p style="margin:0;font-size:14px;color:var(--mut)">Es melon serut ala kafe yang mudah dibuat.</p>
+<details><summary>Lihat resep</summary><ul><li>1 buah Aruni, kerok bentuk bola atau serut</li><li>300 ml susu cair dingin</li><li>3 sdm susu kental manis</li><li>Es batu</li></ul><ol><li>Masukkan melon dan es ke dalam gelas.</li><li>Tuang susu cair dan susu kental manis, aduk dan sajikan.</li></ol></details></div>
+</div></div></section>
+
+</div><div class="view" data-v="simpan"><div class="wrap"><div class="back"><a href="#menu">← Kembali ke Menu</a></div></div><section><div class="wrap">
+<div class="sec-h"><h2>Cara Menyimpan Melon yang Benar</h2><p>Jaga rasa manis, aroma, dan kesegaran melon MELONOVA sampai habis</p></div>
+<div class="grid">
+<div class="rc"><div class="em">🍈</div><h3>Melon Utuh</h3><div class="meta"><b>Belum dipotong</b></div>
+<ol><li><b>Cek kematangan.</b> Melon matang beraroma harum di bagian pangkal dan terasa berat untuk ukurannya.</li><li><b>Belum matang?</b> Simpan di suhu ruang, tempat teduh, dan jauh dari sinar matahari selama 2–4 hari. Aroma dan tekstur akan melunak, tetapi rasa manisnya tidak bertambah.</li><li><b>Sudah matang?</b> Pindahkan ke kulkas, bagian bawah, dan habiskan dalam sekitar 5–7 hari.</li><li><b>Jangan dicuci dulu.</b> Cuci dengan air mengalir dan sikat lembut tepat sebelum dipotong, agar kotoran di kulit tidak terbawa pisau ke daging buah.</li><li>Jauhkan dari bawang, ikan, atau makanan berbau tajam karena aromanya mudah terserap.</li></ol></div>
+<div class="rc"><div class="em">🔪</div><h3>Melon Sudah Dikupas atau Dipotong</h3><div class="meta"><b>Wajib masuk kulkas</b></div>
+<ol><li>Buang biji dan bagian yang berlendir, lalu kupas atau potong sesuai kebutuhan.</li><li>Masukkan ke wadah kedap udara, atau tutup rapat dengan plastik wrap.</li><li>Simpan di kulkas bersuhu sekitar 4 °C atau lebih dingin, dan habiskan dalam 3–4 hari.</li><li><b>Melon belah dua:</b> biarkan biji di dalam, tutup bagian potongan dengan wrap rapat, dan habiskan dalam 2–3 hari.</li><li>Jangan biarkan melon potong di suhu ruang lebih dari 2 jam (1 jam bila udara sangat panas).</li><li>Gunakan pisau dan talenan yang bersih.</li></ol></div>
+<div class="rc"><div class="em">❄️</div><h3>Ingin Lebih Awet? Bekukan</h3><div class="meta"><b>Untuk smoothie, jus, dan sorbet</b></div>
+<ol><li>Potong dadu dan tiriskan atau tepuk kering dengan tisu bersih.</li><li>Tata di atas nampan beralas baking paper, lalu bekukan 1–2 jam supaya tidak menggumpal.</li><li>Pindahkan ke plastik zip atau wadah kedap udara, lalu beri tanggal.</li><li>Kualitas terbaik terjaga sekitar 1–3 bulan.</li><li>Setelah dicairkan, tekstur melon jadi lembek, jadi lebih cocok diolah daripada dimakan langsung.</li></ol></div>
+</div>
+<h3 style="margin:34px 0 12px">Ringkasan Lama Simpan</h3>
+<div style="overflow-x:auto"><table class="tb"><tr><th>Kondisi</th><th>Tempat</th><th>Perkiraan awet</th></tr>
+<tr><td>Utuh, belum matang</td><td>Suhu ruang, teduh</td><td>2–4 hari</td></tr>
+<tr><td>Utuh, sudah matang</td><td>Kulkas</td><td>5–7 hari</td></tr>
+<tr><td>Belah dua, berbiji</td><td>Kulkas, tertutup rapat</td><td>2–3 hari</td></tr>
+<tr><td>Dikupas atau dipotong</td><td>Kulkas, wadah kedap udara</td><td>3–4 hari</td></tr>
+<tr><td>Dibekukan</td><td>Freezer</td><td>1–3 bulan</td></tr></table></div>
+<div class="wb"><b>⚠️ Buang melon jika:</b> berbau asam atau seperti fermentasi, daging berlendir, kulit lembek dan berair, atau tumbuh jamur. Perkiraan waktu di atas bisa berbeda tergantung suhu kulkas dan tingkat kematangan saat dipanen.</div>
+</div></section></div><div class="view" data-v="pengiriman"><div class="wrap"><div class="back"><a href="#menu">← Kembali ke Menu</a></div></div><section><div class="wrap">
+<div class="sec-h"><h2>Info Pengiriman</h2><p>Melon dikirim segar lewat JNE ke kota-kota prioritas kami</p></div>
+<div class="grid">
+<div class="rc"><div class="em">📍</div><h3>Area Prioritas</h3><div class="meta"><b>Purwakarta</b><b>Bandung</b><b>Karawang</b></div><p style="margin:0;font-size:14px;color:var(--mut)">Kami mengutamakan pengiriman ke tiga kota ini agar melon sampai lebih cepat dan tetap segar. Untuk tujuan di luar area tersebut, silakan tanyakan dulu lewat WhatsApp.</p></div>
+<div class="rc"><div class="em">🚚</div><h3>Kurir JNE</h3><p style="margin:8px 0 0;font-size:14px;color:var(--mut)">Semua pesanan diantar lewat JNE. Ongkos kirim mengikuti tarif JNE sesuai alamat tujuan dan akan dikonfirmasi admin sebelum pembayaran.</p></div>
+<div class="rc"><div class="em">⏰</div><h3>Jadwal Pengiriman</h3><p style="margin:8px 0 0;font-size:14px;color:var(--mut)">Pesanan dibawa ke gudang JNE sekitar pukul <b>09.00–10.00 WIB</b>.</p></div>
+</div>
+<h3 style="margin:40px 0 16px;text-align:center">Alur Pengiriman</h3>
+<div class="steps">
+<div class="step"><h3>Pesan &amp; Konfirmasi</h3><p>Kirim pesanan lewat website, lalu admin mengonfirmasi stok dan ongkos kirim.</p></div>
+<div class="step"><h3>Pembayaran</h3><p>Lakukan pembayaran sesuai metode yang dipilih.</p></div>
+<div class="step"><h3>Dikemas &amp; Diantar ke JNE</h3><p>Melon dikemas, lalu dibawa ke gudang JNE sekitar pukul 09.00–10.00 WIB.</p></div>
+<div class="step"><h3>Diantar ke Alamat</h3><p>JNE mengantar melon ke alamat tujuan Anda.</p></div>
+</div>
+<div class="rc" style="margin-top:30px;display:flex;gap:18px;align-items:center;flex-wrap:wrap"><div class="em">🛡️</div><div style="flex:1;min-width:240px"><h3>Kebijakan Komplain</h3><p style="margin:6px 0 0;font-size:14px;color:var(--mut)">Jika melon yang diterima rusak atau tidak sesuai pesanan, komplain dapat diajukan paling lambat <b>24 jam setelah barang diterima</b> oleh pelanggan. Silakan hubungi admin lewat WhatsApp dalam batas waktu tersebut.</p><ul style="margin:12px 0 0;padding-left:20px;font-size:14px;color:var(--mut)"><li><b>Bukti komplain:</b> sertakan foto atau video saat membuka paket, serta foto melon yang bermasalah.</li><li><b>Solusi:</b> melon diganti dengan yang baru atau dananya dikembalikan, sesuai hasil pengecekan admin.</li><li><b>Tidak ditanggung:</b> komplain lewat dari 24 jam, kerusakan akibat salah penyimpanan setelah barang diterima, dan perbedaan selera rasa.</li></ul></div></div>
+<div class="wb"><b>📌 Catatan:</b> Tulis alamat selengkap mungkin dan gunakan nomor WhatsApp yang aktif agar kurir dan admin mudah menghubungi Anda.</div>
+</div></section></div><div class="view" data-v="pembelian"><div class="wrap"><div class="back"><a href="#menu">← Kembali ke Menu</a></div></div><div class="wrap mp" style="padding-top:18px"><div class="wb" style="margin-top:0;display:flex;flex-wrap:wrap;gap:10px;align-items:center"><b>🛍️ Belanja juga bisa lewat:</b><a class="btn o" data-m="shopee" target="_blank" rel="noopener">Shopee</a><a class="btn o" data-m="tokopedia" target="_blank" rel="noopener">Tokopedia</a><a class="btn o" data-m="tiktokshop" target="_blank" rel="noopener">TikTok Shop</a></div></div><section><div class="wrap" style="max-width:640px"><div class="sec-h"><h2>Pembelian</h2><p>Periksa pesanan Anda dan selesaikan checkout</p></div><div class="wb" style="margin:0 0 20px;font-size:14px">🚚 <b>Pengiriman via JNE</b>, diutamakan ke Purwakarta, Bandung, dan Karawang. <a href="#pengiriman" style="color:var(--sage-d);font-weight:600;text-decoration:underline">Lihat info pengiriman</a>. Komplain maksimal 24 jam setelah barang diterima.</div>
+<div class="wb gfb" style="margin:0 0 20px;text-align:center"><p style="margin:0 0 12px">Lebih suka mengisi formulir? Pesanan juga bisa dikirim lewat Google Form.</p><a class="btn y" target="_blank" rel="noopener">📝 Pesan lewat Google Form</a></div>
+<div id="items"></div>
+<div id="sum"></div>
+<div id="co" style="display:none">
+<h3 style="font-size:18px;margin:14px 0 6px">Checkout</h3>
+<label>Nama lengkap</label><input id="nm" placeholder="Nama penerima">
+<label>No. WhatsApp</label><input id="hp" placeholder="08xxxxxxxxxx">
+<label>Alamat pengiriman</label><textarea id="ad" rows="2"></textarea>
+<label>Metode pembayaran</label><select id="pm"><optgroup label="Transfer Bank"><option>Transfer Bank – BCA</option><option>Transfer Bank – BRI</option><option>Transfer Bank – BNI</option><option>Transfer Bank – Mandiri</option><option>Transfer Bank – BSI</option><option>Transfer Bank – CIMB Niaga</option><option>Transfer Bank – Bank Jago</option><option>Transfer Bank – SeaBank</option><option>Transfer Bank – blu by BCA Digital</option></optgroup><optgroup label="E-Wallet"><option>E-Wallet – DANA</option><option>E-Wallet – GoPay</option><option>E-Wallet – OVO</option><option>E-Wallet – ShopeePay</option><option>E-Wallet – LinkAja</option></optgroup><optgroup label="Lainnya"><option>QRIS</option><option>Bayar di Tempat (COD)</option></optgroup></select>
+<label>Kode promo</label><input id="pc" placeholder="FRESH15" oninput="render()">
+<button class="btn" style="width:100%" onclick="order()">Pesan Sekarang</button>
+</div></div></section></div></main>
+<footer><div class="wrap"><div id="soc" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:12px"><a class="btn o" data-s="instagram" target="_blank" rel="noopener">📸 Instagram</a><a class="btn o" data-s="tiktok" target="_blank" rel="noopener">🎵 TikTok</a><a class="btn o" data-s="youtube" target="_blank" rel="noopener">▶️ YouTube</a><a class="btn o" data-s="facebook" target="_blank" rel="noopener">👍 Facebook</a></div>© 2026 MELONOVA – Fresh dari Petani Gen Z · Melon hidroponik segar setiap hari</div></footer>
+
+<div class="ov" id="detail" onclick="if(event.target===this)closeAll()"><div class="modal" id="dm"></div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const mel=c=>`<svg class="mi t${c}" viewBox="0 0 200 210"><use href="#mel"/></svg>`;
+const P=[
+{id:'s',n:'Skidrow',c:'s',pr:45000,st:24,max:40,d:'Tekstur lembut dengan daging putih dan rasa manis hingga 18 °Brix.',f:['Tekstur buah lembut','Daging melon putih','Kemanisan 13–18 °Brix','Cocok untuk jus, smoothie, dan puding']},
+{id:'l',n:'Lavender',c:'l',pr:42500,st:15,max:40,d:'Tekstur crunchy dengan daging kuning cerah dan manis seimbang.',f:['Tekstur buah crunchy','Daging melon kuning cerah','Kemanisan 14–16 °Brix','Cocok untuk dimakan langsung dan salad']},
+{id:'a',n:'Aruni',c:'a',pr:40000,st:9,max:40,d:'Tekstur crunchy dengan daging putih dan rasa manis ringan yang segar.',f:['Tekstur buah crunchy','Daging melon putih','Kemanisan 11–14 °Brix','Cocok untuk es melon dan buah potong']}];
+let cart={};
+const $=i=>document.getElementById(i),rp=n=>'Rp'+n.toLocaleString('id-ID');
+const stk=p=>p.st<=10?`<span class="stock" style="color:#c0662b">Stok menipis: ${p.st} tersisa</span>`:`<span class="stock" style="color:var(--sage-d)">Stok tersedia: ${p.st}</span>`;
+function grid(){$('grid').innerHTML=P.map(p=>`<article class="card"><div class="pic">${mel(p.c)}</div><div class="body"><h3>${p.n}</h3><p>${p.d}</p><div class="price">${rp(p.pr)} <small>/ buah</small></div>${stk(p)}<div class="bar"><i style="width:${p.st/p.max*100}%"></i></div><div class="row"><button class="btn o" onclick="show('${p.id}')">Detail</button><button class="btn" onclick="add('${p.id}')">+ Keranjang</button></div></div></article>`).join('')}
+grid();
+function show(id){const p=P.find(x=>x.id==id);$('dm').innerHTML=`<button class="x" onclick="closeAll()" aria-label="Tutup">×</button><div style="display:grid;place-items:center;background:var(--sage);border-radius:16px;padding:20px;margin-bottom:14px">${mel(p.c)}</div><h3>${p.n}</h3><p style="color:var(--mut)">${p.d}</p><ul>${p.f.map(x=>`<li>${x}</li>`).join('')}</ul><div class="price">${rp(p.pr)} <small>/ buah</small></div>${stk(p)}<p style="margin-top:12px"><button class="btn" onclick="add('${p.id}');closeAll()">Tambah ke Keranjang</button></p>`;$('detail').classList.add('on')}
+function toast(t){const e=$('toast');e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',1800)}
+function add(id){const p=P.find(x=>x.id==id);if((cart[id]||0)>=p.st)return toast('Stok tidak mencukupi');cart[id]=(cart[id]||0)+1;toast(p.n+' ditambahkan');render()}
+function chg(id,d){const p=P.find(x=>x.id==id);const q=(cart[id]||0)+d;if(q>p.st)return toast('Stok tidak mencukupi');if(q<=0)delete cart[id];else cart[id]=q;render()}
+function render(){const ids=Object.keys(cart);const n=ids.reduce((a,i)=>a+cart[i],0);$('cc').textContent=n;
+$('items').innerHTML=ids.length?ids.map(i=>{const p=P.find(x=>x.id==i);return `<div class="item">${mel(p.c)}<div><b>${p.n}</b><br>${rp(p.pr)}</div><span class="qty"><button onclick="chg('${i}',-1)">−</button> ${cart[i]} <button onclick="chg('${i}',1)">+</button></span></div>`}).join(''):'<p style="color:var(--mut)">Keranjang masih kosong.</p>';
+let sub=ids.reduce((a,i)=>a+cart[i]*P.find(x=>x.id==i).pr,0);
+const code=($('pc')?$('pc').value:'').trim().toUpperCase();const disc=(code==='FRESH15'&&n>=3)?Math.round(sub*.15):0;
+$('sum').innerHTML=ids.length?`<div class="tot"><span>Subtotal</span><span>${rp(sub)}</span></div>${disc?`<div class="tot" style="color:var(--sage-d)"><span>Diskon FRESH15</span><span>−${rp(disc)}</span></div>`:''}<div class="tot"><span>Total</span><span>${rp(sub-disc)}</span></div>`:'';
+$('co').style.display=ids.length?'block':'none'}
+function openCart(){location.hash='pembelian'}
+function closeAll(){document.querySelectorAll('.ov').forEach(o=>o.classList.remove('on'))}
+function waMsg(){const ids=Object.keys(cart);const n=ids.reduce((a,i)=>a+cart[i],0);const sub=ids.reduce((a,i)=>a+cart[i]*P.find(x=>x.id==i).pr,0);const code=$('pc').value.trim().toUpperCase();const disc=(code==='FRESH15'&&n>=3)?Math.round(sub*.15):0;
+return 'Halo MELONOVA, saya mau pesan:\n'+ids.map(i=>'- '+P.find(x=>x.id==i).n+' x'+cart[i]).join('\n')+'\n\nTotal: '+rp(sub-disc)+(disc?' (promo FRESH15)':'')+'\n\nNama: '+$('nm').value+'\nWhatsApp: '+$('hp').value+'\nAlamat: '+$('ad').value+'\nPembayaran: '+$('pm').value}
+function waSend(){if(!CONTACT.wa){toast('Nomor WhatsApp penjual belum diisi');return false}window.open('https://wa.me/'+CONTACT.wa+'?text='+encodeURIComponent(waMsg()),'_blank');return true}
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycbw6RMjaD8PUUTf7VfOqcNA_9282uuoiCnKs9zvt2gmHEz9Y2DVOeW6DJuMk2iameEoE/exec';
+async function order(){if(!$('nm').value||!$('hp').value||!$('ad').value)return toast('Lengkapi data pengiriman');
+if(SCRIPT_URL.startsWith('PASTE'))return toast('URL Apps Script belum diisi');
+if(CONTACT.wa)waSend();
+const ids=Object.keys(cart);const n=ids.reduce((a,i)=>a+cart[i],0);
+const sub=ids.reduce((a,i)=>a+cart[i]*P.find(x=>x.id==i).pr,0);
+const code=$('pc').value.trim().toUpperCase();const disc=(code==='FRESH15'&&n>=3)?Math.round(sub*.15):0;
+const data={nama:$('nm').value,hp:$('hp').value,alamat:$('ad').value,bayar:$('pm').value,promo:disc?code:'',
+items:ids.map(i=>P.find(x=>x.id==i).n+' x'+cart[i]).join(', '),qty:{Skidrow:cart.s||0,Lavender:cart.l||0,Aruni:cart.a||0},total:sub-disc};
+const btn=document.querySelector('#co .btn');btn.disabled=true;btn.textContent='Mengirim...';
+try{await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(data)})}
+catch(e){btn.disabled=false;btn.textContent='Pesan Sekarang';return toast('Gagal mengirim, coba lagi')}
+btn.disabled=false;btn.textContent='Pesan Sekarang';
+Object.keys(cart).forEach(i=>{P.find(x=>x.id==i).st-=cart[i]});const nm=$('nm').value;cart={};
+$('items').innerHTML=`<div style="text-align:center;padding:30px 0"><div style="font-size:46px">🍈</div><h3>Terima kasih, ${nm}!</h3><p style="color:var(--mut)">Pesanan Anda diterima. Konfirmasi pembayaran akan dikirim lewat WhatsApp.</p></div>`;
+$('sum').innerHTML='';$('co').style.display='none';$('cc').textContent=0;
+grid()}
+const V=['home','menu','katalog','pembelian','budidaya','resep','simpan','pengiriman'];
+function route(){let h=location.hash.slice(1);if(!V.includes(h))h='home';document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.dataset.v==h));document.querySelectorAll('.links a').forEach(a=>a.classList.toggle('act',a.getAttribute('href')=='#'+h));if(h=='pembelian')render();closeAll();window.scrollTo(0,0)}
+// ISI DATA KONTAK DI SINI (wa format 628xxxxxxxxxx tanpa + atau spasi)
+const CONTACT={wa:'',alamat:'Kp. Krajan, Desa Parakanlima',maps:'',instagram:'',tiktok:'https://www.tiktok.com/@deiki.chanel8',youtube:'https://www.youtube.com/@Deikichanel',facebook:'https://www.facebook.com/Deikichanel',shopee:'',tokopedia:'',tiktokshop:'',ulasan:'https://docs.google.com/forms/d/e/1FAIpQLSdIA-Ob7NFIPfxbDPY9GNHhn3Ai0_phh655cH0lJzvXUEyGDQ/viewform',gform:'https://docs.google.com/forms/d/e/1FAIpQLSd8QWWrVkaCVaqgg-jaIZeS9PTuKDXCs9YdTwslSLiOLTXwlg/viewform'}; // isi link lengkap, mis. https://instagram.com/namaakun
+function contact(){const w=CONTACT.wa;document.querySelectorAll('.wa').forEach(a=>{if(w){a.href='https://wa.me/'+w+'?text='+encodeURIComponent('Halo MELONOVA, saya mau tanya tentang melon.');a.style.display=''}else a.style.display='none'});
+$('addr').textContent=CONTACT.alamat||'Alamat greenhouse akan segera diumumkan.';
+const m=$('maps');if(CONTACT.maps){m.href=CONTACT.maps;m.style.display=''}else m.style.display='none'}
+document.querySelectorAll('.mp').forEach(b=>{let n=0;b.querySelectorAll('a').forEach(a=>{const u=CONTACT[a.dataset.m];if(u){a.href=u;n++}else a.style.display='none'});if(!n)b.style.display='none'});
+document.querySelectorAll('#lk a').forEach(a=>a.onclick=()=>$('lk').classList.remove('on'));
+document.querySelectorAll('.ul').forEach(b=>{if(CONTACT.ulasan)b.querySelector('a').href=CONTACT.ulasan;else b.style.display='none'});
+document.querySelectorAll('.gfb').forEach(b=>{if(CONTACT.gform)b.querySelector('a').href=CONTACT.gform;else b.style.display='none'});
+document.querySelectorAll('#soc a,.ss a').forEach(a=>{const u=CONTACT[a.dataset.s];if(u)a.href=u;else a.style.display='none'});
+contact();
+addEventListener('hashchange',route);route();
+</script>
+</body>
+</html>
